@@ -5,7 +5,7 @@ Open Source Tool for automate WPS pin attacks based on a local database and/or 3
 # How It Works? 3wifi.stascorp.com Method
 
 In this git you can find an offline version of 3wifi.stascorp.com.
-It's a page based on html + javascript that calculate all possible PINS typing your BSSID.
+It's a page based on html + javascript that calculate all possible PINS by typing your BSSID.
 To execute it you have just to open index.html (TheReaver/3WIFI: WPS PIN generator_files) in a browser.
 
  ![img](https://i.imgur.com/fyIu5Ya.png)
