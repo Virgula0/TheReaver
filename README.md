@@ -8,7 +8,7 @@ In this git you can find an offline version of 3wifi.stascorp.com.
 It's a page based on html + javascript that calculate all possible PINS typing your BSSID.
 To execute it you have just to open index.html (TheReaver/3WIFI: WPS PIN generator_files) in a browser.
 
- ![img](https://i.imgur.com/fyIu5Ya)
+ ![img](https://i.imgur.com/fyIu5Ya.png)
 
 As you can see you will get all WPS PIN possble for your router calculated with solid alghoritms in javascript by the page.
 After that you can save the results in a txt, then you have to indicate the path to TheReaver Program when it asks "Insert Pin File (DEFAULT Pins in db):".
