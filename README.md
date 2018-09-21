@@ -10,7 +10,7 @@ To execute it you have just to open index.html (TheReaver/3WIFI: WPS PIN generat
 
  ![img](https://i.imgur.com/fyIu5Ya.png)
 
-As you can see you will get all WPS PIN possble for your router calculated with solid alghoritms in javascript by the page.
+As you can see you will get all WPS PIN possible for your router calculated with solid alghoritms in javascript by the page.
 After that you can save the results in a txt, then you have to indicate the path to TheReaver Program when it asks "Insert Pin File (DEFAULT Pins in db):".
 
 Program will automatically format the input and will begin to try all PINS and if attack ends succesfully you will get all infos about the attack with the password in clear format!
