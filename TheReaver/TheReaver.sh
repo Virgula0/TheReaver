@@ -137,7 +137,7 @@ interface(){
   command airmon-ng |grep -v "Interface";
   read -p $'\n\e[1;92m[\e[0m\e[1;77m*\e[0m\e[1;92m] Choose Your Interface: \e[0m\en' Interface
   printf "\e[1;92m\e[1;34mStarting interface...\n"
-  WIFIMONITOR=$(airmon-ng start wlan1 |grep "monitor .* enabled" |grep -oP "wl[a-zA-Z0-9]+mon|mon[0-9]+|prism[0-9]+")
+  WIFIMONITOR=$(airmon-ng start $Interface |grep "monitor .* enabled" |grep -oP "wl[a-zA-Z0-9]+mon|mon[0-9]+|prism[0-9]+")
   #printf "\n\e[1;92m[\e[0m\e[1;77m01\e[0m\e[1;92m] Trying PixieDust Attack...\e[0m\en"
   if [[ "$WIFIMONITOR" == "" || "$WIFIMONITOR" == " " ]]; then
     WIFIMONITOR=$Interface
@@ -295,7 +295,10 @@ menu(){
      sleep 5s;
    else
      ARRAY=$(sed 's/|.*//' $file |sed '/codes for/d' |sed '/^\s*$/d' |sed -n '/<empty> /!p'|sed '$!N; /^\(.*\)\n\1$/!P; D')
-     NUMB=$(wc -l $file |sed 's/ .*//')
+     NUMB=0;
+     for item in ${ARRAY[*]}; do
+	NUMB=$((NUMB+1))
+     done
   fi
 
 
