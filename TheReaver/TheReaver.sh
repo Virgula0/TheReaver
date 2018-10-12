@@ -18,7 +18,7 @@ github_user="v1s1t0r1sh3r3"
 github_repository="airgeddon"
 branch="master"
 pins_dbfile_checksum="pindb_checksum.txt";
-known_pins_dbfile="known_pins.db";
+known_pins_dbfile="./known_pins.db";
 urlscript_pins_dbfile="https://raw.githubusercontent.com/${github_user}/${github_repository}/${branch}/${known_pins_dbfile}"
 urlscript_pins_dbfile_checksum="https://raw.githubusercontent.com/${github_user}/${github_repository}/${branch}/${pins_dbfile_checksum}"
 urlscript_thereaver_checksum="https://raw.githubusercontent.com/Virgula0/TheReaver/master/thereaverchecksum.txt"
@@ -305,7 +305,11 @@ menu(){
 	fi
 
   printf "\n\e[1;92m\e[1;31mWelcome! \e[1;92m\e[1;92m"
-  if [ ! -f "$known_pins_dbfile" ]; then
+
+wget -q --spider https://google.com
+
+if [ $? -eq 0 ]; then
+      if [ ! -f "$known_pins_dbfile" ]; then
     printf "\e[1;92m\e[1;31mUnable to find pin default database. Downloading....\n";
     download_pins_database_file
   fi
@@ -325,6 +329,7 @@ menu(){
 		printf "\e[1;92m\e[1;31m\nVersion outdated updating please wait....\n";
 		download_update
 	fi
+fi
 
   interface
   introduction
