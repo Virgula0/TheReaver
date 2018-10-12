@@ -36,7 +36,7 @@ function get_local_pin_dbfile_checksum() {
 }
 
 function get_local_thereaver_checksum() {
-	LOCATION="$(pwd)/$current_file";
+	LOCATION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )";
 	local_thereaver_checksum=$(md5sum "${LOCATION}" | awk '{print $1}')
 }
 
