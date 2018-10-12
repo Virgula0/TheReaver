@@ -7,11 +7,6 @@
 #|Usage........: sudo TheReaver.sh                                                                                                                       |
 #---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-if [ "$EUID" -ne 0 ]
-	then   printf "\n\e[1;31m\e[1;31mPlease Run it as root\n \n"
-	exit
-fi
-
 command -v reaver > /dev/null 2>&1 || { echo >&2 "I require reaver but it's not installed. Install it. Aborting."; exit 1; }
 command -v wash > /dev/null 2>&1 || { echo >&2 "I require wash but it's not installed. Install it. Aborting."; exit 1; }
 command -v airmon-ng > /dev/null 2>&1 || { echo >&2 "I require airmon-ng but it's not installed. Install it. Aborting."; exit 1; }
@@ -23,7 +18,7 @@ github_user="v1s1t0r1sh3r3"
 github_repository="airgeddon"
 branch="master"
 pins_dbfile_checksum="pindb_checksum.txt";
-known_pins_dbfile="known_pins.db";
+known_pins_dbfile="./known_pins.db";
 urlscript_pins_dbfile="https://raw.githubusercontent.com/${github_user}/${github_repository}/${branch}/${known_pins_dbfile}"
 urlscript_pins_dbfile_checksum="https://raw.githubusercontent.com/${github_user}/${github_repository}/${branch}/${pins_dbfile_checksum}"
 urlscript_thereaver_checksum="https://raw.githubusercontent.com/Virgula0/TheReaver/master/thereaverchecksum.txt"
@@ -36,7 +31,7 @@ function get_local_pin_dbfile_checksum() {
 }
 
 function get_local_thereaver_checksum() {
-	LOCATION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )";
+	LOCATION="$(pwd)/$current_file";
 	local_thereaver_checksum=$(md5sum "${LOCATION}" | awk '{print $1}')
 }
 
@@ -303,6 +298,11 @@ start(){
 menu(){
 
   introduction
+
+	if [ "$EUID" -ne 0 ]
+		then   printf "\n\e[1;31m\e[1;31mPlease Run it as root\n \n"
+		exit
+	fi
 
   printf "\n\e[1;92m\e[1;31mWelcome! \e[1;92m\e[1;92m"
 
