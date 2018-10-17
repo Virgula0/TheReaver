@@ -7,6 +7,11 @@
 #|Usage........: sudo TheReaver.sh                                                                                                                       |
 #---------------------------------------------------------------------------------------------------------------------------------------------------------
 
+if [ "$EUID" -ne 0 ]
+	then   printf "\n\e[1;31m\e[1;31mPlease Run it as root\n \n"
+	exit
+fi
+
 command -v reaver > /dev/null 2>&1 || { echo >&2 "I require reaver but it's not installed. Install it. Aborting."; exit 1; }
 command -v wash > /dev/null 2>&1 || { echo >&2 "I require wash but it's not installed. Install it. Aborting."; exit 1; }
 command -v airmon-ng > /dev/null 2>&1 || { echo >&2 "I require airmon-ng but it's not installed. Install it. Aborting."; exit 1; }
@@ -298,12 +303,7 @@ start(){
 menu(){
 
   introduction
-
-	if [ "$EUID" -ne 0 ]
-		then   printf "\n\e[1;31m\e[1;31mPlease Run it as root\n \n"
-		exit
-	fi
-
+  
   printf "\n\e[1;92m\e[1;31mWelcome! \e[1;92m\e[1;92m"
 
 wget -q --spider https://google.com
